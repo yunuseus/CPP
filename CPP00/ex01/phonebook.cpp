@@ -51,9 +51,11 @@ int main()
 	std:: cout << contacs.getter(0);
 	while (1)
 	{
-	
+		
 		std:: cout << ""<< std::endl;
 		std:: cin >> select;
+		if (!(ft_strcmp(select, "ADD", ft_strlen(select)) == 0 || ft_strcmp(select, "SEARCH", ft_strlen(select)) == 0 || ft_strcmp(select, "EXIT", ft_strlen(select)) == 0))
+			std:: cout << "PLEASE TYPE A VALID SELECT" << std:: endl;
 		selection(select);
 	}
 }
