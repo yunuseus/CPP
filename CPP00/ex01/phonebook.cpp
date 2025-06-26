@@ -38,7 +38,7 @@ void selection(std:: string select)
 	}
 	if (ft_strcmp(select, "EXIT", ft_strlen(select)) == 0)
 	{
-		std:: cout << "exit yapılıyor" << std:: endl;
+		exit(0);
 	}
 }
 
@@ -54,7 +54,6 @@ int main()
 	
 		std:: cout << ""<< std::endl;
 		std:: cin >> select;
-		std:: cout << std:: endl;
 		selection(select);
 	}
 }
