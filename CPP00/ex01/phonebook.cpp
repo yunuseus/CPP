@@ -2,41 +2,56 @@
 #include <iostream>
 #include <stdlib.h>
 
-size_t ft_strlen(std:: string s1)
-{
-	size_t i = 0;
-	while (s1[i] != '\0')
-		i++;
-	return i;
-}
 
-int	ft_strcmp(std:: string s1, std:: string s2, size_t n)
-{
-	size_t	i;
-	char	*a;
-	char	*b;
 
-	i = 0;
-	while (i < n)
-	{
-		if (s1[i] != s2[i])
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-		i++;
-	}
-	return (0);
+void create_contact()
+{
+	Contact cont;
+	std:: string str;
+	std:: cout << "FIRST NAME:";
+	std::getline(std:: cin, str);
+	if(str.empty())
+		exit(1);
+	cont.setter(str, 0);
+	std:: cout << "LAST NAME:";
+	std:: cin >> str;
+	std:: cout << std:: endl;
+	if(str.empty())
+		exit(1);
+	cont.setter(str, 1);
+	std:: cout << "NICK NAME:";
+	std:: cin >> str;
+	std:: cout << std:: endl;
+
+	if(str.empty())
+		exit(1);
+	cont.setter(str, 2);
+	std:: cout << "PHONE NUMBER:";
+	std:: cin >> str;
+	std:: cout << std:: endl;
+	if(str.empty())
+		exit(1);
+	cont.setter(str, 3);
+		std:: cout << "DARKEST SECRET:";
+	std:: cin >> str;
+	std:: cout << std:: endl;
+	if(str.empty())
+		exit(1);
+	cont.setter(str, 4);
+	
 }
 
 void selection(std:: string select)
 {
-	if (ft_strcmp(select, "ADD", ft_strlen(select)) == 0)
+	if (select =="ADD")
 	{
-		std:: cout << "add yapılıyor" << std:: endl;
+		create_contact();
 	}
-	if (ft_strcmp(select, "SEARCH", ft_strlen(select)) == 0)
+	if (select=="SEARCH")
 	{
 		std:: cout << "search yapılıyor" << std:: endl;
 	}
-	if (ft_strcmp(select, "EXIT", ft_strlen(select)) == 0)
+	if (select=="EXIT")
 	{
 		exit(0);
 	}
@@ -53,8 +68,8 @@ int main()
 	{
 		
 		std:: cout << ""<< std::endl;
-		std:: cin >> select;
-		if (!(ft_strcmp(select, "ADD", ft_strlen(select)) == 0 || ft_strcmp(select, "SEARCH", ft_strlen(select)) == 0 || ft_strcmp(select, "EXIT", ft_strlen(select)) == 0))
+		std:: getline(std:: cin, select);
+		if (!(select=="ADD"||select=="SEARCH"|| select=="EXIT"))
 			std:: cout << "PLEASE TYPE A VALID SELECT" << std:: endl;
 		selection(select);
 	}
