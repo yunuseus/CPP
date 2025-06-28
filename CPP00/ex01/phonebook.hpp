@@ -6,24 +6,26 @@
 class  PhoneBook
 {
 	private:
-		Contact concats[8];
+		Contact contacts[8];
+		int oldest_index;
 		
 	public:
-		void print_contatcs()
+		void add_contact(Contact c, int i)
 		{
+			contacts[i] = c;
+		}
+		Contact get_contact(int i)
+		{
+			return contacts[i];
+		}
+		void set_oldest_i(int i)
+		{
+			oldest_index = i;
+		}
+		int get_oldest_i()
+		{
+			return oldest_index;
+		}
 
-		}
-		void add()
-		{
-
-		}
-		void search()
-		{
-			
-		}
-		void exit()
-		{
-
-		}
 };
 #endif
