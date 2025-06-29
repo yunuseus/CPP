@@ -17,29 +17,32 @@ void print_contacts(PhoneBook book)
 	}
 }
 
-void add_contact_book(Contact cont, PhoneBook& book)
+void add_contact_book(Contact cont, PhoneBook& book, int *real_i)
 {
 	Contact tmp;
-	for(int i = 0; i <= 8; i++)
+	
+	// Eğer telefon defteri doluysa, en eski kaydın üzerine yaz
+	if (*real_i >= 8)
+	{
+		book.add_contact(cont, *real_i % 8);
+		(*real_i)++;
+		return;
+	}
+	
+	// Boş yer ara (sadece 0-7 arası indeksler geçerli)
+	for(int i = 0; i < 8; i++)
 	{
 		tmp = book.get_contact(i);
 		if (tmp.getter(0).empty())
 		{
 			book.add_contact(cont, i);
+			(*real_i)++;
 			break;
-		}
-		
-		if (i == 8)
-		{
-			if (book.get_oldest_i() == 8)
-				book.set_oldest_i(0);
-			book.add_contact(cont, book.get_oldest_i());
-			book.set_oldest_i(book.get_oldest_i() + 1);
 		}
 	}
 }
 
-void create_contact(PhoneBook& book)
+void create_contact(PhoneBook& book, int *real_i)
 {
 	Contact cont;
 	std:: string str;
@@ -69,14 +72,14 @@ void create_contact(PhoneBook& book)
 		std::cin.ignore();
 	cont.setter(str, 4);
 	
-	add_contact_book(cont, book);
+	add_contact_book(cont, book, real_i);
 }
 
-void selection(std:: string select, PhoneBook& book)
+void selection(std:: string select, PhoneBook& book, int *real_i)
 {
 	if (select =="ADD")
 	{
-		create_contact(book);
+		create_contact(book, real_i);
 	}
 	if (select=="SEARCH")
 	{
@@ -92,6 +95,7 @@ int main()
 {
 	PhoneBook book;
 	Contact contacs;
+	int real_i = 0;
 	book.set_oldest_i(0);
 	contacs.setter("yunus", 0);
 	std:: string select;
@@ -103,6 +107,6 @@ int main()
 		std:: getline(std:: cin, select);
 		if (!(select=="ADD"||select=="SEARCH"|| select=="EXIT"))
 			std:: cout << "PLEASE TYPE A VALID SELECT" << std:: endl;
-		selection(select, book);
+		selection(select, book, &real_i);
 	}
 }
