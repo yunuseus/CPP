@@ -1,12 +1,16 @@
 #include "phonebook.hpp"
 #include <iostream>
 #include <stdlib.h>
+#include <string.h>
 #include <iomanip>
 
 
 void print_format(std:: string str)
 {
-
+	if (str.length() > 10)
+		std::cout << str.substr(0,9) << ".";
+	else
+		std:: cout << std::setw(10) << std:: left << str;
 }
 
 void print_contacts(PhoneBook book)
@@ -20,8 +24,17 @@ void print_contacts(PhoneBook book)
 		tmp = book.get_contact(i);
 		if (!tmp.getter(0).empty())
 		{
-			std::cout << std::left << std::setw(10) << tmp.getter(0) << "..." << std::endl;
-
+	
+			std:: cout << "|";
+			std:: cout << std::setw(10) << std:: left << i;
+			std:: cout << "|";
+			print_format(tmp.getter(0));
+			std:: cout << "|";
+			print_format(tmp.getter(1));
+			std:: cout << "|";
+			print_format(tmp.getter(2));
+			std:: cout << "|" << std:: endl;
+			std:: cout << "---------------------------------------------" << std:: endl;
 		}
 		else
 			break;
