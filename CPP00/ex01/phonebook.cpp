@@ -4,18 +4,23 @@
 #include <iomanip>
 
 
+void print_format(std:: string str)
+{
+
+}
+
 void print_contacts(PhoneBook book)
 {
 	Contact tmp;
-	std:: cout << "----------------------------------------------" << std:: endl;
-	std:: cout << "|    index| Fırst Name | Last Name| Nick Name|" << std:: endl;
-	std:: cout << "----------------------------------------------" << std:: endl;
+	std:: cout << "---------------------------------------------" << std:: endl;
+	std:: cout << "|index     |First Name|Last Name |Nick Name |" << std:: endl;
+	std:: cout << "---------------------------------------------" << std:: endl;
 	for (int i = 0; i < 8; i++)
 	{
 		tmp = book.get_contact(i);
 		if (!tmp.getter(0).empty())
 		{
-			std::cout << std::left << std::setw(20) << tmp.getter(0) << " | <- burada bitiyor" << std::endl;
+			std::cout << std::left << std::setw(10) << tmp.getter(0) << "..." << std::endl;
 
 		}
 		else
