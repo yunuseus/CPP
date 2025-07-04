@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <iomanip>
+#include <sstream>
 
 
 void print_format(std:: string str)
@@ -19,12 +20,14 @@ void print_contacts(PhoneBook book)
 	std:: cout << "---------------------------------------------" << std:: endl;
 	std:: cout << "|index     |First Name|Last Name |Nick Name |" << std:: endl;
 	std:: cout << "---------------------------------------------" << std:: endl;
+	
+	int contact_count = 0;
 	for (int i = 0; i < 8; i++)
 	{
 		tmp = book.get_contact(i);
 		if (!tmp.getter(0).empty())
 		{
-	
+			contact_count++;
 			std:: cout << "|";
 			std:: cout << std::setw(10) << std:: left << i;
 			std:: cout << "|";
@@ -38,6 +41,45 @@ void print_contacts(PhoneBook book)
 		}
 		else
 			break;
+	}
+	
+	if (contact_count == 0)
+	{
+		std:: cout << "No contacts found!" << std:: endl;
+		return;
+	}
+	
+	while (true)
+	{
+		std:: cout << "Enter the index of the contact to display: ";
+		std:: string input;
+		if (!std::getline(std:: cin, input))
+		{
+			std:: cout << "\nInput cancelled." << std:: endl;
+			return;
+		}
+		
+		std::stringstream ss(input);
+		int index;
+		if (!(ss >> index) || !ss.eof() || index < 0 || index >= 8)
+		{
+			std:: cout << "Invalid index! Please try again." << std:: endl;
+			continue; 
+		}
+		
+		Contact selected = book.get_contact(index);
+		if (selected.getter(0).empty())
+		{
+			std:: cout << "No contact at index " << index << "! Please try again." << std:: endl;
+			continue; 
+		}
+		
+		std:: cout << "First Name: " << selected.getter(0) << std:: endl;
+		std:: cout << "Last Name: " << selected.getter(1) << std:: endl;
+		std:: cout << "Nick Name: " << selected.getter(2) << std:: endl;
+		std:: cout << "Phone Number: " << selected.getter(3) << std:: endl;
+		std:: cout << "Darkest Secret: " << selected.getter(4) << std:: endl;
+		break;
 	}
 }
 
@@ -69,27 +111,32 @@ void create_contact(PhoneBook& book, int *real_i)
 	Contact cont;
 	std:: string str;
 	std:: cout << "FIRST NAME:";
-	std::getline(std:: cin, str);
+	if (!std::getline(std:: cin, str))
+		return;
 	if(str.empty())
 		std::cin.ignore();
 	cont.setter(str, 0);
 	std:: cout << "LAST NAME:";
-	std::getline(std:: cin, str);
+	if (!std::getline(std:: cin, str))
+		return;
 	if(str.empty())
 		std::cin.ignore();
 	cont.setter(str, 1);
 	std:: cout << "NICK NAME:";
-	std::getline(std:: cin, str);
+	if (!std::getline(std:: cin, str))
+		return;
 	if(str.empty())
 		std::cin.ignore();
 	cont.setter(str, 2);
 	std:: cout << "PHONE NUMBER:";
-	std::getline(std:: cin, str);
+	if (!std::getline(std:: cin, str))
+		return;
 	if(str.empty())
 		std::cin.ignore();
 	cont.setter(str, 3);
 	std:: cout << "DARKEST SECRET:";
-	std::getline(std:: cin, str);
+	if (!std::getline(std:: cin, str))
+		return;
 	if(str.empty())
 		std::cin.ignore();
 	cont.setter(str, 4);
@@ -111,10 +158,7 @@ void selection(std:: string select, PhoneBook& book, int *real_i)
 	{
 		print_contacts(book);
 	}
-	if (select=="EXIT")
-	{
-		exit(0);
-	}
+	
 }
 
 int main()
@@ -130,9 +174,18 @@ int main()
 	{
 		
 		std:: cout << ""<< std::endl;
-		std:: getline(std:: cin, select);
+		if (!std::getline(std:: cin, select))
+		{
+			std:: cout << "\nExiting..." << std:: endl;
+			break;
+		}
 		if (!(select=="ADD"||select=="SEARCH"|| select=="EXIT"))
 			std:: cerr << "PLEASE TYPE A VALID SELECT" << std:: endl;
+		if (select=="EXIT")
+		{
+			return(0);
+		}
 		selection(select, book, &real_i);
 	}
+	return 0;
 }
