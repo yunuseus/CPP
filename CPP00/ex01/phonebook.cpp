@@ -1,8 +1,8 @@
 #include "phonebook.hpp"
 #include <iostream>
-#include <string>
+#include <stdlib.h>
+#include <string.h>
 #include <iomanip>
-#include <sstream>
 
 
 void print_format(std:: string str)
@@ -13,54 +13,7 @@ void print_format(std:: string str)
 		std:: cout << std::setw(10) << std:: left << str;
 }
 
-void index_selection(PhoneBook& book)
-{
-    std::string index;
-    int num;
-    std::cout << "Enter index (0-7): ";
-    
-    while (1)
-		{
-			if (!std::getline(std::cin, index))
-			{
-				std::cout << std::endl << "EOF detected. Exiting..." << std::endl;
-				break;
-			}
-		
-        std::stringstream ss(index);
-        if (ss >> num && ss.eof())
-        {
-            if (num >= 0 && num <= 7)
-            {
-                Contact tmp = book.get_contact(num);
-                if (!tmp.getter(0).empty())
-                {
-                    std::cout << "First Name: " << tmp.getter(0) << std::endl;
-                    std::cout << "Last Name: " << tmp.getter(1) << std::endl;
-                    std::cout << "Nick Name: " << tmp.getter(2) << std::endl;
-                    std::cout << "Phone Number: " << tmp.getter(3) << std::endl;
-                    std::cout << "Darkest Secret: " << tmp.getter(4) << std::endl;
-                    break;
-                }
-                else
-                {
-                    std::cout << "No contact at this index." << std::endl;
-                    break;
-                }
-            }
-            else
-            {
-                std::cout << "Invalid index. Please enter 0-7: ";
-            }
-        }
-        else
-        {
-            std::cout << "Invalid input. Please enter a number: ";
-        }
-    }
-}
-
-void print_contacts(PhoneBook& book)
+void print_contacts(PhoneBook book)
 {
 	Contact tmp;
 	std:: cout << "---------------------------------------------" << std:: endl;
@@ -86,7 +39,6 @@ void print_contacts(PhoneBook& book)
 		else
 			break;
 	}
-	index_selection(book);
 }
 
 void add_contact_book(Contact cont, PhoneBook& book, int *real_i)
@@ -116,53 +68,37 @@ void create_contact(PhoneBook& book, int *real_i)
 {
 	Contact cont;
 	std:: string str;
-	std:: cout << "FIRST NAME: ";
+	std:: cout << "FIRST NAME:";
 	std::getline(std:: cin, str);
-	if (str.empty())
-	{
-		std::cout << "Empty field not allowed!" << std::endl;
-		return;
-	}
+	if(str.empty())
+		std::cin.ignore();
 	cont.setter(str, 0);
-	
-	std::cout << "LAST NAME: ";
-	std::getline(std::cin, str);
-	if (str.empty())
-	{
-		std::cout << "Empty field not allowed!" << std::endl;
-		return;
-	}
+	std:: cout << "LAST NAME:";
+	std::getline(std:: cin, str);
+	if(str.empty())
+		std::cin.ignore();
 	cont.setter(str, 1);
-	
-	std::cout << "NICK NAME: ";
-	std::getline(std::cin, str);
-	if (str.empty())
-	{
-		std::cout << "Empty field not allowed!" << std::endl;
-		return;
-	}
+	std:: cout << "NICK NAME:";
+	std::getline(std:: cin, str);
+	if(str.empty())
+		std::cin.ignore();
 	cont.setter(str, 2);
-	
-	std::cout << "PHONE NUMBER: ";
-	std::getline(std::cin, str);
-	if (str.empty())
-	{
-		std::cout << "Empty field not allowed!" << std::endl;
-		return;
-	}
+	std:: cout << "PHONE NUMBER:";
+	std::getline(std:: cin, str);
+	if(str.empty())
+		std::cin.ignore();
 	cont.setter(str, 3);
-	
-	std::cout << "DARKEST SECRET: ";
-	std::getline(std::cin, str);
-	if (str.empty())
-	{
-		std::cout << "Empty field not allowed!" << std::endl;
-		return;
-	}
+	std:: cout << "DARKEST SECRET:";
+	std::getline(std:: cin, str);
+	if(str.empty())
+		std::cin.ignore();
 	cont.setter(str, 4);
-	
+	if (cont.getter(0).empty() || cont.getter(1).empty() || cont.getter(2).empty() || cont.getter(3).empty() || cont.getter(4).empty())
+	{
+		std:: cerr << "empty attributes";
+		return ;
+	}
 	add_contact_book(cont, book, real_i);
-	std::cout << "Contact added successfully!" << std::endl;
 }
 
 void selection(std:: string select, PhoneBook& book, int *real_i)
@@ -175,43 +111,28 @@ void selection(std:: string select, PhoneBook& book, int *real_i)
 	{
 		print_contacts(book);
 	}
-	
+	if (select=="EXIT")
+	{
+		exit(0);
+	}
 }
 
 int main()
 {
-    PhoneBook book;
-    std::string select;
-    int real_i = 0;
-    
-    while (1)
-    {
-        std::cout << "Enter command (ADD/SEARCH/EXIT): ";
-        
-        if (!std::getline(std::cin, select))
-        {
-            std::cout << std::endl << "EOF detected. Exiting..." << std::endl;
-            break;
-        }
-        
-        if (select.empty())
-        {
-            continue; 
-        }
-        
-        if (select == "ADD" || select == "SEARCH" || select == "EXIT")
-        {
-			if (select=="EXIT")
-			{
-				return (0);
-			}
-            selection(select, book, &real_i);
-        }
-        else
-        {
-            std::cerr << "PLEASE TYPE A VALID COMMAND (ADD/SEARCH/EXIT)" << std::endl;
-        }
-    }
-    
-    return 0;
+	PhoneBook book;
+	Contact contacs;
+	int real_i = 0;
+	book.set_oldest_i(0);
+	contacs.setter("yunus", 0);
+	std:: string select;
+	std:: cout << contacs.getter(0);
+	while (1)
+	{
+		
+		std:: cout << ""<< std::endl;
+		std:: getline(std:: cin, select);
+		if (!(select=="ADD"||select=="SEARCH"|| select=="EXIT"))
+			std:: cerr << "PLEASE TYPE A VALID SELECT" << std:: endl;
+		selection(select, book, &real_i);
+	}
 }
