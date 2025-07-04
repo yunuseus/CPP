@@ -18,14 +18,6 @@ class  PhoneBook
 		{
 			return contacts[i];
 		}
-		void set_oldest_i(int i)
-		{
-			oldest_index = i;
-		}
-		int get_oldest_i()
-		{
-			return oldest_index;
-		}
 
 };
 #endif
