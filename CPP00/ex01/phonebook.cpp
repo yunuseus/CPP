@@ -52,7 +52,11 @@ void print_contacts(PhoneBook& book)
     {
         std::cout << "Enter the index of the contact to display: ";
         std::string input;
-        std::getline(std::cin, input);
+        if (!std::getline(std::cin, input))
+        {
+            std::cout << "\nReturning to menu..." << std::endl;
+            return;
+        }
         
         std::stringstream ss(input);
         int index;
@@ -109,7 +113,11 @@ void create_contact(PhoneBook& book, int *real_i)
     while (1)
     {
         std::cout << "FIRST NAME: ";
-        std::getline(std::cin, str);
+        if (!std::getline(std::cin, str))
+        {
+            std::cout << "\nReturning to menu..." << std::endl;
+            return;
+        }
         if (!str.empty())
             break;
         std::cout << "Empty field not allowed! Please try again." << std::endl;
@@ -119,7 +127,11 @@ void create_contact(PhoneBook& book, int *real_i)
     while (1)
     {
         std::cout << "LAST NAME: ";
-        std::getline(std::cin, str);
+        if (!std::getline(std::cin, str))
+        {
+            std::cout << "\nReturning to menu..." << std::endl;
+            return;
+        }
         if (!str.empty())
             break;
         std::cout << "Empty field not allowed! Please try again." << std::endl;
@@ -129,7 +141,11 @@ void create_contact(PhoneBook& book, int *real_i)
     while (1)
     {
         std::cout << "NICK NAME: ";
-        std::getline(std::cin, str);
+        if (!std::getline(std::cin, str))
+        {
+            std::cout << "\nReturning to menu..." << std::endl;
+            return;
+        }
         if (!str.empty())
             break;
         std::cout << "Empty field not allowed! Please try again." << std::endl;
@@ -139,7 +155,11 @@ void create_contact(PhoneBook& book, int *real_i)
     while (1)
     {
         std::cout << "PHONE NUMBER: ";
-        std::getline(std::cin, str);
+        if (!std::getline(std::cin, str))
+        {
+            std::cout << "\nReturning to menu..." << std::endl;
+            return; 
+        }
         if (!str.empty())
             break;
         std::cout << "Empty field not allowed! Please try again." << std::endl;
@@ -149,7 +169,11 @@ void create_contact(PhoneBook& book, int *real_i)
     while (1)
     {
         std::cout << "DARKEST SECRET: ";
-        std::getline(std::cin, str);
+        if (!std::getline(std::cin, str))
+        {
+            std::cout << "\nReturning to menu..." << std::endl;
+            return;
+        }
         if (!str.empty())
             break;
         std::cout << "Empty field not allowed! Please try again." << std::endl;
@@ -182,11 +206,15 @@ int main()
     {
         std::cout << "Enter command (ADD/SEARCH/EXIT): ";
         if (!std::getline(std::cin, select))
-			break;
+        {
+            std::cout << "\nExiting..." << std::endl;
+            break;
+        }
         
         if (select == "EXIT")
         {
-            return 0;
+            std::cout << "Exiting..." << std::endl;
+            break ;
         }
         
         if (select == "ADD" || select == "SEARCH")
