@@ -1,9 +1,20 @@
 #include "phonebook.hpp"
-#include <iostream>
-#include <stdlib.h>
-#include <string.h>
 #include <iomanip>
 #include <sstream>
+#include <cctype>  
+
+int is_only_digits(const std::string& str)
+{
+    if (str.empty())
+        return 0;  
+    
+    for (int i = 0; i < (int)str.length(); i++)
+    {
+        if (!isdigit(str[i]))
+            return 0; 
+    }
+    return 1;
+}
 
 void print_format(std::string str)
 {
@@ -160,9 +171,17 @@ void create_contact(PhoneBook& book, int *real_i)
             std::cout << "\nReturning to menu..." << std::endl;
             return; 
         }
-        if (!str.empty())
-            break;
-        std::cout << "Empty field not allowed! Please try again." << std::endl;
+        if (str.empty())
+        {
+            std::cout << "Empty field not allowed! Please try again." << std::endl;
+            continue;
+        }
+        if (!is_only_digits(str))
+        {
+            std::cout << "Phone number must contain only digits! Please try again." << std::endl;
+            continue;
+        }
+        break;
     }
     cont.setter(str, 3);
     
