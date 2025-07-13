@@ -1,9 +1,9 @@
-#include "phonebook.hpp"
+#include "PhoneBook.hpp"
 #include <iomanip>
 #include <sstream>
 #include <cctype>  
 
-int is_only_digits(const std::string& str)
+int is_only_digits(const std::string str)
 {
     if (str.empty())
         return 0;  
@@ -24,7 +24,7 @@ void print_format(std::string str)
         std::cout << std::setw(10) << std::left << str;
 }
 
-void print_contacts(PhoneBook& book)
+void print_contacts(PhoneBook book)
 {
     Contact tmp;
     std::cout << "---------------------------------------------" << std::endl;
