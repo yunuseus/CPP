@@ -1,5 +1,4 @@
 #include <iostream>
-#include <stdlib.h>
 
 int main(int argc, char **argv) {
 	if (argc < 2) {
@@ -11,9 +10,6 @@ int main(int argc, char **argv) {
 		for (int j = 0; argv[i][j] != '\0'; ++j) {
 				std::cout << (char)toupper(argv[i][j]);
 		
-		}
-		if (i < argc - 1) {
-			std::cout << " ";
 		}
 	}
 	std::cout << std::endl;
