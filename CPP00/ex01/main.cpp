@@ -61,11 +61,11 @@ void print_contacts(PhoneBook book)
     
     while (true)
     {
-        std::cout << "Enter the index of the contact to display: ";
+        std::cout << "Enter the index of the contact to display: " << std::endl;
         std::string input;
         if (!std::getline(std::cin, input))
         {
-            std::cout << "\nReturning to menu..." << std::endl;
+            std::cout << "Returning to menu..." << std::endl;
             return;
         }
         
@@ -123,7 +123,7 @@ void create_contact(PhoneBook& book, int *real_i)
     
     while (1)
     {
-        std::cout << "FIRST NAME: ";
+        std::cout << "FIRST NAME: " << std::endl;
         if (!std::getline(std::cin, str))
         {
             std::cout << "\nReturning to menu..." << std::endl;
@@ -137,7 +137,7 @@ void create_contact(PhoneBook& book, int *real_i)
     
     while (1)
     {
-        std::cout << "LAST NAME: ";
+        std::cout << "LAST NAME: " << std::endl;
         if (!std::getline(std::cin, str))
         {
             std::cout << "\nReturning to menu..." << std::endl;
@@ -151,7 +151,7 @@ void create_contact(PhoneBook& book, int *real_i)
     
     while (1)
     {
-        std::cout << "NICK NAME: ";
+        std::cout << "NICK NAME: " << std::endl ;
         if (!std::getline(std::cin, str))
         {
             std::cout << "\nReturning to menu..." << std::endl;
@@ -165,7 +165,7 @@ void create_contact(PhoneBook& book, int *real_i)
     
     while (1)
     {
-        std::cout << "PHONE NUMBER: ";
+        std::cout << "PHONE NUMBER: " << std::endl;
         if (!std::getline(std::cin, str))
         {
             std::cout << "\nReturning to menu..." << std::endl;
@@ -187,7 +187,7 @@ void create_contact(PhoneBook& book, int *real_i)
     
     while (1)
     {
-        std::cout << "DARKEST SECRET: ";
+        std::cout << "DARKEST SECRET: " << std::endl;
         if (!std::getline(std::cin, str))
         {
             std::cout << "\nReturning to menu..." << std::endl;
@@ -223,10 +223,10 @@ int main()
     
     while (1)
     {
-        std::cout << "Enter command (ADD/SEARCH/EXIT): ";
+        std::cout << "Enter command (ADD/SEARCH/EXIT): " << std::endl;
         if (!std::getline(std::cin, select))
         {
-            std::cout << "\nExiting..." << std::endl;
+            std::cout << "Exiting..." << std::endl;
             break;
         }
         
