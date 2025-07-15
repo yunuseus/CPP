@@ -21,14 +21,14 @@ void print_format(std::string str)
     if (str.length() > 10)
         std::cout << str.substr(0,9) << ".";
     else
-        std::cout << std::setw(10) << std::left << str;
+        std::cout << std::setw(10) << std::right << str;
 }
 
 void print_contacts(PhoneBook book)
 {
     Contact tmp;
     std::cout << "---------------------------------------------" << std::endl;
-    std::cout << "|index     |First Name|Last Name |Nick Name |" << std::endl;
+    std::cout << "|     index|First Name| Last Name| Nick Name|" << std::endl;
     std::cout << "---------------------------------------------" << std::endl;
     
     int contact_count = 0;
@@ -39,7 +39,7 @@ void print_contacts(PhoneBook book)
         {
             contact_count++;
             std::cout << "|";
-            std::cout << std::setw(10) << std::left << i;
+            std::cout << std::setw(10) << std::right << i;
             std::cout << "|";
             print_format(tmp.getter(0));
             std::cout << "|";
