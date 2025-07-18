@@ -10,7 +10,7 @@ int is_only_digits(const std::string str)
     
     for (int i = 0; i < (int)str.length(); i++)
     {
-        if (!isdigit(str[i]))
+        if (!(std::isdigit(str[i])))
             return 0; 
     }
     return 1;
@@ -71,7 +71,7 @@ void print_contacts(PhoneBook book)
         
         std::stringstream ss(input);
         int index;
-        if (!(ss >> index) || !ss.eof() || index < 0 || index >= 8)
+        if (!(ss >> index) || index < 0 || index >= 8)
         {
             std::cout << "Invalid index! Please try again." << std::endl;
             continue; 
