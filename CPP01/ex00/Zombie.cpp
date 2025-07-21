@@ -1,13 +1,16 @@
-void Zombie:: announce(void) const
+#include "Zombie.hpp"
+
+void Zombie::announce(void) const
 {
     std::cout << name << " BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
-void Zombie::setName(std::string name)
+Zombie::Zombie(std::string name)
 {
-    name = name;
+    this->name = name;
 }
-std::string Zombie::getName(void) const
+Zombie::~Zombie()
 {
-    return name;
+    std::cout << name << " is destroyed." << std::endl;
 }
+

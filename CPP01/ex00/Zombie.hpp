@@ -1,12 +1,14 @@
-#include 
+#include <iostream>
+
 class Zombie 
 {
     private:
         std::string name;
     public:
+
         Zombie(std::string name);
         ~Zombie();
         void announce(void) const;
-        void setName(std::string name);
-        std::string getName(void) const;
-} 
+        Zombie* newZombie(std:: string name);
+        void randomChump(std::string name);
+};
