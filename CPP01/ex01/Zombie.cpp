@@ -8,10 +8,10 @@ void Zombie::announce(void) const
 
 Zombie::Zombie()
 {
-    name = "Zombie";
+    name = "defaultZombie";
 }
 
-Zombie::Zombie(std::string name)
+Zombie::setName(std::string name)
 {
     this->name = name;
 }
