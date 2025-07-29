@@ -11,7 +11,7 @@ Zombie::Zombie()
     name = "defaultZombie";
 }
 
-Zombie::setName(std::string name)
+void Zombie::setName(std::string name)
 {
     this->name = name;
 }
