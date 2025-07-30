@@ -2,7 +2,7 @@ NAME = a.out
 CPP = c++
 CFLAGS = -std=c++98 -Wall -Wextra -Werror 
 SRCS = main.cpp \
-       harl.cpp 
+       Harl.cpp 
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
