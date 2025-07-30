@@ -2,9 +2,7 @@ NAME = a.out
 CPP = c++
 CFLAGS = -std=c++98 -Wall -Wextra -Werror 
 SRCS = main.cpp \
-		newZombie.cpp \
-		randomChump.cpp \
-		Zombie.cpp
+       harl.cpp 
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)

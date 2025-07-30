@@ -25,7 +25,7 @@ int main(int argc, char **argv)
 	std::string line;
 	if (argc != 4)
 	{
-		std::cerr << "bad arguments"<< std::endl;
+		std::cerr << "Bad arguments"<< std::endl;
 		return 1;
 	}
 	std::ifstream inputFile(argv[1]);
