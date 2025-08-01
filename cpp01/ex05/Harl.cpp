@@ -1,5 +1,10 @@
 #include "Harl.hpp"
 #include <iostream>
+
+Harl::Harl(){}
+
+Harl::~Harl(){}
+
 void Harl::warning()
 {
   std::cout << "I think I deserve to have some extra bacon for free. I've been coming for years, whereas you started working here just last month." << std::endl;
