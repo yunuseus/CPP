@@ -8,7 +8,7 @@ void Zombie::announce(void) const
 
 Zombie::Zombie()
 {
-    name = "defaultZombie";
+
 }
 
 void Zombie::setName(std::string name)
