@@ -2,28 +2,9 @@
 #include <iostream>
 #include <fstream>
 
-std::string manageLine(std::string line, char **argv)
-{
-	std::string s1 = argv[2];
-	std::string s2 = argv[3]; 
-	std::string result = line;
-	
-	size_t pos = 0;
-	while ((pos = result.find(s1, pos)) != std::string::npos)
-	{
-		result.erase(pos, s1.length());
-		result.insert(pos, s2);         
-		pos += s2.length();            
-	}
-	
-	return result + "\n";
-}
-
 int main(int argc, char **argv)
 {
-	std::string allOfFile;
-	std::string line;
-	if (argc != 4)
+	if (argc != 4 || std::string(argv[1]).empty() || std::string(argv[2]).empty() || std::string(argv[3]).empty())
 	{
 		std::cerr << "Bad arguments"<< std::endl;
 		return 1;
@@ -31,16 +12,25 @@ int main(int argc, char **argv)
 	std::ifstream inputFile(argv[1]);
 	if (inputFile.is_open())
 	{
-		while(std::getline(inputFile, line))
-		{
-			allOfFile += manageLine(line, argv);
-		}
+		std::string fileContent((std::istreambuf_iterator<char>(inputFile)),std::istreambuf_iterator<char>());
 		inputFile.close();
+		
+		std::string s1 = argv[2];
+		std::string s2 = argv[3];
+		
+		size_t pos = 0;
+		while ((pos = fileContent.find(s1, pos)) != std::string::npos)
+		{
+			fileContent.erase(pos, s1.length());
+			fileContent.insert(pos, s2);
+			pos += s2.length();
+		}
+		
 		std::string outputFilename = std::string(argv[1]) + ".replace";
 		std::ofstream outputFile(outputFilename.c_str());
 		if (outputFile.is_open())
 		{
-			outputFile << allOfFile;
+			outputFile << fileContent;
 			outputFile.close();
 		}
 		else
