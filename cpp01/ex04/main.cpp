@@ -1,6 +1,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <sstream>
 
 int main(int argc, char **argv)
 {
@@ -12,7 +13,9 @@ int main(int argc, char **argv)
 	std::ifstream inputFile(argv[1]);
 	if (inputFile.is_open())
 	{
-		std::string fileContent((std::istreambuf_iterator<char>(inputFile)),std::istreambuf_iterator<char>());
+		std::ostringstream buffer;
+		buffer << inputFile.rdbuf();
+		std::string fileContent = buffer.str();
 		inputFile.close();
 		
 		std::string s1 = argv[2];
