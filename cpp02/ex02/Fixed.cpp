@@ -51,7 +51,12 @@ Fixed Fixed::operator+(const Fixed& a) const
     r.setRawBits(this->getRawBits() + a.getRawBits());
     return r;
 }
-
+Fixed Fixed::operator-(const Fixed& a) const
+{
+    Fixed r;
+    r.setRawBits(this->getRawBits() - a.getRawBits());
+    return r;
+}
 Fixed& Fixed::operator=(const Fixed& a)
 {
     std::cout << "Copy assignment operator called" << std::endl;

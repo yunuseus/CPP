@@ -23,7 +23,7 @@ class Fixed
 	Fixed& operator--();
 	Fixed operator--(int);
 	Fixed operator+(const Fixed& a) const;
-   // Fixed operator-(const Fixed& a) const;
+    Fixed operator-(const Fixed& a) const;
   //  Fixed operator*(const Fixed& a) const;
     //Fixed operator/(const Fixed& a) const;
 	// static Fixed&       min(Fixed& a, Fixed& b);
