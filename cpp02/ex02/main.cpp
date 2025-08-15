@@ -2,10 +2,10 @@
 #include "Fixed.hpp"
 int main( void ) 
 {
-Fixed a(3);
-Fixed b(4);
+Fixed a(10);
+Fixed b(5);
 std::cout << a << std::endl;
-std::cout << a - b << std::endl;
+std::cout << a / b << std::endl;
 std::cout << a << std::endl;
 std::cout << a++ << std::endl;
 std::cout << a << std::endl;

@@ -64,6 +64,19 @@ Fixed& Fixed::operator=(const Fixed& a)
         this->value = a.getRawBits();
     return (*this);
 }
+Fixed Fixed::operator*(const Fixed& a) const
+{
+    Fixed r;
+    r.setRawBits((this->getRawBits() * a.getRawBits()) >> fractionalBits);
+    return r;
+}
+Fixed Fixed::operator/(const Fixed& a) const
+{
+    Fixed r;
+    r.setRawBits((this->getRawBits() << fractionalBits)/ a.getRawBits());
+    return r;
+}
+
 Fixed& Fixed::operator++()
 {
     this->value += (1 << fractionalBits);
