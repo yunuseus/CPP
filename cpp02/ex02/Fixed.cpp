@@ -1,6 +1,7 @@
 #include "Fixed.hpp"
 Fixed::Fixed()
 {
+    this->setRawBits(0);
     std::cout << "Default constructor called" << std::endl;
 }
 
@@ -66,39 +67,67 @@ Fixed& Fixed::operator=(const Fixed& a)
 }
 Fixed Fixed::operator*(const Fixed& a) const
 {
-    Fixed r;
-    r.setRawBits((this->getRawBits() * a.getRawBits()) >> fractionalBits);
+   Fixed r;
+    long long tmp = static_cast<long long>(this->getRawBits()) *
+                    static_cast<long long>(a.getRawBits());
+    r.setRawBits(static_cast<int>(tmp >> fractionalBits));
     return r;
 }
 Fixed Fixed::operator/(const Fixed& a) const
 {
     Fixed r;
-    r.setRawBits((this->getRawBits() << fractionalBits)/ a.getRawBits());
+    long long num = static_cast<long long>(this->getRawBits()) << fractionalBits;
+    r.setRawBits(static_cast<int>(num / static_cast<long long>(a.getRawBits())));
     return r;
 }
 
 Fixed& Fixed::operator++()
 {
-    this->value += (1 << fractionalBits);
+    ++this->value;
     return *this;
 }
 Fixed Fixed::operator++(int)
 {
     Fixed tmp(*this);
-    this->value += (1 << fractionalBits);
+    ++this->value;
     return tmp;
 }
 
 Fixed& Fixed::operator--()
 {
-    this->value -= (1 << fractionalBits);
+    --this->value;
     return *this;
 }
 Fixed Fixed::operator--(int)
 {
     Fixed tmp(*this);
-    this->value -= (1 << fractionalBits);
+    --this->value;
     return tmp;
+}
+bool Fixed::operator<(const Fixed& a) const
+{
+   return this->getRawBits() < a.getRawBits();
+}
+
+bool Fixed::operator>(const Fixed& a) const
+{
+   return this->getRawBits() > a.getRawBits();
+}
+bool Fixed::operator>=(const Fixed& a) const
+{
+   return this->getRawBits() >= a.getRawBits();
+}
+bool Fixed::operator<=(const Fixed& a) const
+{
+   return this->getRawBits() <= a.getRawBits();
+}
+bool Fixed::operator==(const Fixed& a) const
+{
+   return this->getRawBits() == a.getRawBits();
+}
+bool Fixed::operator!=(const Fixed& a) const
+{
+   return this->getRawBits() != a.getRawBits();
 }
 
 std::ostream& operator<<(std::ostream& os, const Fixed& obj)

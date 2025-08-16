@@ -26,6 +26,12 @@ class Fixed
     Fixed operator-(const Fixed& a) const;
     Fixed operator*(const Fixed& a) const;
     Fixed operator/(const Fixed& a) const;
+	bool operator<(const Fixed&a) const;
+	bool operator>(const Fixed& a) const;
+	bool operator==(const Fixed& a) const;
+	bool operator<=(const Fixed& a) const;
+	bool operator>=(const Fixed& a) const;
+	bool operator!=(const Fixed& a) const;
 	// static Fixed&       min(Fixed& a, Fixed& b);
     // static const Fixed& min(const Fixed& a, const Fixed& b);
     // static Fixed&       max(Fixed& a, Fixed& b);
