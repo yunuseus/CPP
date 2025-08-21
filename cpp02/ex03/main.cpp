@@ -28,9 +28,9 @@ bool bsp(Point const a, Point const b, Point const c, Point const p)
 int main()
 {
 	Point a(Fixed(0),Fixed(0));
-	Point b(Fixed(3),Fixed(0));
-	Point c(Fixed(0),Fixed(4));
-	Point p(Fixed(5), Fixed(5));
+	Point b(Fixed(1.5f),Fixed(1.5f));
+	Point c(Fixed(2.5f),Fixed(0));
+	Point p(Fixed(1.3f), Fixed(1.2f));
 	std::cout << bsp(a ,b ,c ,p)<< std::endl;
 	return 0;
 }

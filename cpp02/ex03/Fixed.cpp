@@ -26,9 +26,9 @@ int Fixed::getRawBits() const
 {
     return this->value;
 }
-void Fixed::setRawBits(int a)
+void Fixed::setRawBits(int const raw)
 {
-    this->value = a;
+    this->value = raw;
 }
 
 int Fixed::toInt() const
