@@ -1,11 +1,36 @@
 #include "Point.hpp"
+#include <iostream>
 
-bool bsp( Point const a, Point const b, Point const c, Point const point)
+static Fixed cross(const Point& a, const Point& b, const Point& c)
 {
-	Fixed cross =(b.getX() - b.getX())*(c.getY() - a.getY()) - 
+    return (b.getX() - a.getX()) * (c.getY() - a.getY())
+         - (b.getY() - a.getY()) * (c.getX() - a.getX());
+}
+
+bool bsp(Point const a, Point const b, Point const c, Point const p)
+{
+    Fixed area = cross(a, b, c);
+    if (area == Fixed(0))
+    {
+        std::cout << "there is no triangle" << std::endl;
+        return false;
+    }
+
+    Fixed c1 = cross(a, b, p);
+    Fixed c2 = cross(b, c, p);
+    Fixed c3 = cross(c, a, p);
+
+    bool allPos = (c1 > Fixed(0)) && (c2 > Fixed(0)) && (c3 > Fixed(0));
+    bool allNeg = (c1 < Fixed(0)) && (c2 < Fixed(0)) && (c3 < Fixed(0));
+    return allPos || allNeg;
 }
 
 int main()
 {
-
+	Point a(Fixed(0),Fixed(0));
+	Point b(Fixed(3),Fixed(0));
+	Point c(Fixed(0),Fixed(4));
+	Point p(Fixed(5), Fixed(5));
+	std::cout << bsp(a ,b ,c ,p)<< std::endl;
+	return 0;
 }

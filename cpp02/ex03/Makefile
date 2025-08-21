@@ -1,19 +1,18 @@
 NAME = a.out
-
+CPP = c++
+CFLAGS = -std=c++98 -Wall -Wextra -Werror 
 SRCS = main.cpp \
-	   Fixed.cpp \
-	   Point.cpp \
-	   Bsp.cpp
-
+       Fixed.cpp \
+	   Point.cpp 
 OBJS = $(SRCS:.cpp=.o)
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+all: $(NAME)
 
-NAME : $(OBJS)
-	$(CFLAGS) -o $(NAME) $(OBJS)
+$(NAME): $(OBJS)
+	$(CPP) $(CFLAGS) -o $(NAME) $(OBJS)
 
 %.o : %.cpp
-	$(CFLAGS) -c $< -o $@
+	$(CPP) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJS)
@@ -21,6 +20,6 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-re: fclean all
+re : fclean all
 
 .PHONY: all clean fclean re
