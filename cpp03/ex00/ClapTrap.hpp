@@ -4,15 +4,18 @@
 class ClapTrap{
 	private:
 		std::string name;
-		unsigned int hitPoints;
-		unsigned int energyPoints;
+		unsigned int HitPoints;
+		unsigned int EnergyPoints;
 		unsigned int AttackDamage;
 	public:
 		ClapTrap();
+		ClapTrap(std::string name);
 		~ClapTrap();
+		ClapTrap(const ClapTrap& other);
 		void attack(const std::string& target);
 		void takeDamage(unsigned int amount);
 		void beReapired(unsigned int amount);
+		ClapTrap& operator=(const ClapTrap& other);
 };
 
 #endif
