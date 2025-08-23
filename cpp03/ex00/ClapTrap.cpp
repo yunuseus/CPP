@@ -26,6 +26,47 @@ ClapTrap::~ClapTrap()
 void ClapTrap::takeDamage(unsigned int amount)
 {
 	if (this->EnergyPoints > 0 && this->HitPoints > 0)
-		this->HitPoints -= amount;
+	{
+		if (amount >= this->HitPoints)
+			this->HitPoints = 0;
+		else
+			this->HitPoints -= amount;
+	}
 }
 
+ClapTrap::ClapTrap(const ClapTrap& clap)
+{
+	std::cout << "Copy constructor called" << std::endl;
+	*this = clap;
+}
+
+ClapTrap& ClapTrap::operator=(const ClapTrap& clap)
+{
+	std::cout << "Copy assigment operator called" << std::endl;
+	if (this != &clap)
+	{
+		this->AttackDamage = clap.getAttackDamage();
+		this->EnergyPoints = clap.getEnergyPoints();
+		this->HitPoints = clap.getHitPoints();
+		this->name = clap.getName();
+	}
+	return *this;
+}
+std::string ClapTrap::getName() const
+{
+	return this->name;
+}
+unsigned int ClapTrap::getAttackDamage() const
+{
+	return this->AttackDamage;
+}
+
+unsigned int ClapTrap::getHitPoints() const
+{
+	return this->HitPoints;
+}
+
+unsigned int ClapTrap::getEnergyPoints() const
+{
+	return this->EnergyPoints;
+}
