@@ -14,7 +14,7 @@ class ClapTrap{
 		ClapTrap(const ClapTrap& other);
 		void attack(const std::string& target);
 		void takeDamage(unsigned int amount);
-		void beReapired(unsigned int amount);
+		void beRepaired(unsigned int amount);
 		ClapTrap& operator=(const ClapTrap& other);
 		unsigned int getHitPoints() const;
 		unsigned int getEnergyPoints() const;

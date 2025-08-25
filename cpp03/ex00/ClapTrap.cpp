@@ -25,7 +25,7 @@ ClapTrap::~ClapTrap()
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-	if (this->EnergyPoints > 0 && this->HitPoints > 0)
+	if (this->HitPoints > 0)
 	{
 		if (amount >= this->HitPoints)
 			this->HitPoints = 0;
@@ -52,6 +52,36 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& clap)
 	}
 	return *this;
 }
+
+void ClapTrap::attack(const std::string& target)
+{
+    if (this->EnergyPoints > 0 && this->HitPoints > 0)
+    {
+        this->EnergyPoints -= 1;
+        std::cout << "ClapTrap " << this->name << " attacks " << target
+                  << ", causing " << this->AttackDamage << " points of damage!" << std::endl;
+    }
+    else
+    {
+        std::cout << "ClapTrap " << this->name << " can't attack (no energy or dead)" << std::endl;
+    }
+}
+
+void ClapTrap::beRepaired(unsigned int amount)
+{
+    if (this->HitPoints > 0 && this->EnergyPoints > 0)
+    {
+        this->HitPoints += amount;
+        this->EnergyPoints -= 1;
+        std::cout << "ClapTrap " << this->name << " is repaired by "
+                  << amount << " hit points" << std::endl;
+    }
+    else
+    {
+        std::cout << "ClapTrap " << this->name << " can't repair (no energy or dead)" << std::endl;
+    }
+}
+
 std::string ClapTrap::getName() const
 {
 	return this->name;
