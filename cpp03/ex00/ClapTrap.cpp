@@ -1,5 +1,4 @@
 #include "ClapTrap.hpp"
-#include  <iostream>
 ClapTrap::ClapTrap()
 {
 	std::cout << "Default Constructor called"<< std::endl;
