@@ -27,10 +27,26 @@ bool bsp(Point const a, Point const b, Point const c, Point const p)
 
 int main()
 {
+
+    std::cout << "valid test" << std::endl;
+
 	Point a(Fixed(0),Fixed(0));
 	Point b(Fixed(1.5f),Fixed(1.5f));
 	Point c(Fixed(2.5f),Fixed(0));
 	Point p(Fixed(1.3f), Fixed(1.2f));
 	std::cout << bsp(a ,b ,c ,p)<< std::endl;
+
+    std::cout << "invalid test" << std::endl;
+
+    Point o(Fixed(10), Fixed(10));
+    std::cout << bsp(a,b,c,o) << std::endl;
+
+    std::cout << "invalid triangle test" << std::endl;
+
+    Point e(Fixed(3), Fixed(3));
+    Point f(Fixed(3), Fixed(5));
+    Point g(Fixed(3), Fixed(9));
+    std::cout << bsp(e,f,g,p)<< std::endl;
+
 	return 0;
 }
