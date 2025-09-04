@@ -13,7 +13,7 @@ class Point
 		Point operator=(const Point& a);
 		Point(const Point& obj);
 		const Fixed& getX() const;
-		const Fixed& getY() const ;
+		const Fixed& getY() const;
 };
 
 #endif
