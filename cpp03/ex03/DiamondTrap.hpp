@@ -1,3 +1,5 @@
+#ifndef DIAMONDTRAP_HPP
+#define DIAMONDTRAP_HPP
 #include "FragTrap.hpp"
 #include "ScavTrap.hpp"
 
@@ -11,10 +13,8 @@ class DiamondTrap : virtual public FragTrap, virtual public ScavTrap, virtual pu
 		DiamondTrap(std::string name);
 		DiamondTrap(const DiamondTrap& other);
 		DiamondTrap& operator=(const DiamondTrap& other);
-
-		using ScavTrap::attack;
-		using FragTrap::HitPoints;
-		using ScavTrap::EnergyPoints;
-		using FragTrap::AttackDamage;
+		void attack(const std::string& target);
+		void whoAmI();
 
 };
+#endif
