@@ -10,7 +10,7 @@ ClapTrap::ClapTrap()
 
 ClapTrap::ClapTrap(std::string name)
 {
-	std::cout << "Construcotr called" << std::endl;
+	std::cout << "Constructor called" << std::endl;
 	this->name = name;
 	this->EnergyPoints = 10;
 	this->HitPoints = 10;
