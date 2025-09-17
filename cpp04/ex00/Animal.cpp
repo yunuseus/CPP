@@ -20,11 +20,11 @@ Animal& Animal::operator=(Animal& other)
 	std::cout << "Animal assignment operator called" << std::endl;
 	return *this;
 }
-std::string Animal::getType()
+const std::string Animal::getType() const
 {
 	return type;
 }
-void Animal::makeSound()
+void Animal::makeSound() const
 {
 	std::cout << "Animal sound" << std::endl;
 }

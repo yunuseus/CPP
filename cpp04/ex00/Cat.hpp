@@ -9,5 +9,6 @@ class Cat : public Animal
 	~Cat();
 	Cat(Cat& other);
 	Cat& operator=(Cat& other);
+	void makeSound() const;
 };
 #endif

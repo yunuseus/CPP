@@ -26,3 +26,8 @@ Cat& Cat::operator=(Cat& other)
 	std::cout << "Cat assignment operator called" << std::endl;
 	return *this;
 }
+
+void Cat::makeSound() const
+{
+	std::cout << "Meow" << std::endl;
+}

@@ -25,3 +25,8 @@ Dog& Dog::operator=(Dog& other)
 	std::cout << "Dog assignment operator called" << std::endl;
 	return *this;
 }
+
+void Dog::makeSound() const
+{
+	std::cout << "Woof" << std::endl;
+}
