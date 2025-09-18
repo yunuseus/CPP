@@ -6,7 +6,7 @@
 /*   By: yalp <yalp@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 15:08:23 by yalp              #+#    #+#             */
-/*   Updated: 2025/09/18 15:17:40 by yalp             ###   ########.fr       */
+/*   Updated: 2025/09/18 15:53:36 by yalp             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 #include "WrongAnimal.hpp"
 class WrongDog : public WrongAnimal
 {
-	protected:
-	std::string type;
 	public:
 	WrongDog();
 	~WrongDog();
@@ -24,7 +22,6 @@ class WrongDog : public WrongAnimal
 	WrongDog& operator=(WrongDog& other);
 	void makeSound() const;
 	void setType(std::string type);
-	std::string getType();
 };
 
 #endif

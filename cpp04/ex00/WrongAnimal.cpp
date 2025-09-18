@@ -6,7 +6,7 @@
 /*   By: yalp <yalp@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 15:21:33 by yalp              #+#    #+#             */
-/*   Updated: 2025/09/18 15:21:46 by yalp             ###   ########.fr       */
+/*   Updated: 2025/09/18 15:54:09 by yalp             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,4 @@ const std::string WrongAnimal::getType() const
 void WrongAnimal::makeSound() const
 {
 	std::cout << "WrongAnimal sound" << std::endl;
-}
-void WrongAnimal::setType(std::string type)
-{
-	this->type = type;
 }
