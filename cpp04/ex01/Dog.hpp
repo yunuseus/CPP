@@ -6,7 +6,7 @@
 /*   By: yalp <yalp@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 15:04:50 by yalp              #+#    #+#             */
-/*   Updated: 2025/09/18 17:07:56 by yalp             ###   ########.fr       */
+/*   Updated: 2025/09/19 16:25:19 by yalp             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 class Dog : public Animal
 {
 	private:
-		Brain* Brain;
+		Brain* brain;
 	public:
 	Dog();
 	~Dog();

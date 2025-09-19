@@ -1,46 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yalp <yalp@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/18 15:04:47 by yalp              #+#    #+#             */
+/*   Created: 2025/09/19 16:13:36 by yalp              #+#    #+#             */
 /*   Updated: 2025/09/19 16:25:19 by yalp             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
-Dog::Dog()
+#include "Brain.hpp"
+#include <iostream>
+
+Brain::Brain()
 {
-	this->type = "Dog";
-	std::cout << "Dog constructor called" << std::endl;
-	this->brain = new Brain();
+    std::cout << "Brain constructor called" << std::endl;
 }
 
-Dog::~Dog()
+Brain::~Brain()
 {
-	delete this->brain;
-	std::cout << "Dog destructor called" << std::endl;
+    std::cout << "Brain destructor called" << std::endl;
 }
 
-Dog::Dog(Dog& other) : Animal(other)
+Brain::Brain(Brain& other)
 {
-	*this = other;
-	std::cout << "Dog copy constructor called" << std::endl;
+    *this = other;
+    std::cout << "Brain copy constructor called" << std::endl;
 }
 
-Dog& Dog::operator=(Dog& other)
+Brain& Brain::operator=(Brain& other)
 {
-	if (this != &other)
-	{
-		Animal::operator=(other);
-	}
-	std::cout << "Dog assignment operator called" << std::endl;
-	return *this;
-}
-
-void Dog::makeSound() const
-{
-	std::cout << "Woof" << std::endl;
+    if (this != &other)
+    {
+        for (int i = 0; i < 100; i++)
+        {
+            this->ideas[i] = other.ideas[i];
+        }
+    }
+    std::cout << "Brain copy assignment operator called" << std::endl;
+    return *this;
 }

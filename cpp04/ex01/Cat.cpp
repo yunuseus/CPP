@@ -6,7 +6,7 @@
 /*   By: yalp <yalp@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 15:04:42 by yalp              #+#    #+#             */
-/*   Updated: 2025/09/18 15:04:42 by yalp             ###   ########.fr       */
+/*   Updated: 2025/09/19 16:25:19 by yalp             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,16 @@
 
 Cat::Cat()
 {
+
 	this->type = "Cat";
 	std::cout << "Cat constructor called" << std::endl;
+	this->brain = new Brain();
+
 }
 
 Cat::~Cat()
 {
+	delete this->brain;
 	std::cout << "Cat destructor called" << std::endl;
 }
 

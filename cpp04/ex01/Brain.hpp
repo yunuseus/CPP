@@ -6,7 +6,7 @@
 /*   By: yalp <yalp@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 17:05:30 by yalp              #+#    #+#             */
-/*   Updated: 2025/09/18 17:06:46 by yalp             ###   ########.fr       */
+/*   Updated: 2025/09/19 16:25:19 by yalp             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,12 @@
 
 class Brain
 {
+	public:
 	std::string ideas[100];
+	Brain();
+	~Brain();
+	Brain(Brain& other);
+	Brain& operator=(Brain& other);
 };
 
 #endif
