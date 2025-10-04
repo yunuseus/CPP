@@ -6,7 +6,7 @@
 /*   By: yalp <yalp@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 16:13:36 by yalp              #+#    #+#             */
-/*   Updated: 2025/09/19 16:25:19 by yalp             ###   ########.fr       */
+/*   Updated: 2025/10/04 14:48:16 by yalp             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ Brain::~Brain()
     std::cout << "Brain destructor called" << std::endl;
 }
 
-Brain::Brain(Brain& other)
+Brain::Brain(const Brain& other)
 {
     *this = other;
     std::cout << "Brain copy constructor called" << std::endl;
 }
 
-Brain& Brain::operator=(Brain& other)
+Brain& Brain::operator=(const Brain& other)
 {
     if (this != &other)
     {

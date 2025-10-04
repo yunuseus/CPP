@@ -6,7 +6,7 @@
 /*   By: yalp <yalp@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 15:04:52 by yalp              #+#    #+#             */
-/*   Updated: 2025/09/19 17:00:46 by yalp             ###   ########.fr       */
+/*   Updated: 2025/10/04 14:39:40 by yalp             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,9 @@
 
 int main()
 {
-const Animal* animals[100];
-for (int i = 0; i < 100; i++)
+Dog basic;
 {
-    if (i >= 50)
-        animals[i] = new Dog();
-    else
-        animals[i] = new Cat();
-}
-for (int i = 0; i < 100; i++)
-{
-    delete animals[i];
+Dog tmp = basic;
 }
 return 0;
 }

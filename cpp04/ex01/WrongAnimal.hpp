@@ -6,7 +6,7 @@
 /*   By: yalp <yalp@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 15:08:06 by yalp              #+#    #+#             */
-/*   Updated: 2025/09/18 15:52:54 by yalp             ###   ########.fr       */
+/*   Updated: 2025/10/04 14:47:08 by yalp             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ class WrongAnimal
 	public:
 	WrongAnimal();
 	~WrongAnimal();
-	WrongAnimal(WrongAnimal& other);
-	WrongAnimal& operator=(WrongAnimal& other);
+	WrongAnimal(const WrongAnimal& other);
+	WrongAnimal& operator=(const WrongAnimal& other);
 	void makeSound() const;
 	const std::string getType() const;
 };
