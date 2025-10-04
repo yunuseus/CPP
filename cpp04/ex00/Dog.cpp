@@ -6,7 +6,7 @@
 /*   By: yalp <yalp@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 15:04:47 by yalp              #+#    #+#             */
-/*   Updated: 2025/09/18 15:04:47 by yalp             ###   ########.fr       */
+/*   Updated: 2025/10/04 14:50:26 by yalp             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ Dog::~Dog()
 	std::cout << "Dog destructor called" << std::endl;
 }
 
-Dog::Dog(Dog& other) : Animal(other)
+Dog::Dog(const Dog& other) : Animal(other)
 {
 	*this = other;
 	std::cout << "Dog copy constructor called" << std::endl;
 }
 
-Dog& Dog::operator=(Dog& other)
+Dog& Dog::operator=(const Dog& other)
 {
 	if (this != &other)
 	{

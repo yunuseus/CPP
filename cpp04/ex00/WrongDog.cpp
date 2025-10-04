@@ -6,7 +6,7 @@
 /*   By: yalp <yalp@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 15:20:55 by yalp              #+#    #+#             */
-/*   Updated: 2025/09/18 15:41:55 by yalp             ###   ########.fr       */
+/*   Updated: 2025/10/04 14:51:10 by yalp             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ WrongDog::~WrongDog()
 	std::cout << "WrongDog destructor called" << std::endl;
 }
 
-WrongDog::WrongDog(WrongDog& other) : WrongAnimal(other)
+WrongDog::WrongDog(const WrongDog& other) : WrongAnimal(other)
 {
 	*this = other;
 	std::cout << "WrongDog copy constructor called" << std::endl;
 }
 
-WrongDog& WrongDog::operator=(WrongDog& other)
+WrongDog& WrongDog::operator=(const WrongDog& other)
 {
 	if (this != &other)
 	{
