@@ -6,7 +6,7 @@
 /*   By: yalp <yalp@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 15:04:39 by yalp              #+#    #+#             */
-/*   Updated: 2025/09/24 15:23:58 by yalp             ###   ########.fr       */
+/*   Updated: 2025/10/04 14:55:18 by yalp             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ class Animal
 	public:
 	Animal();
 	virtual ~Animal();
-	Animal(Animal& other);
-	Animal& operator=(Animal& other);
+	Animal(const Animal& other);
+	Animal& operator=(const Animal& other);
 	const std::string getType() const;
 	virtual void makeSound() const = 0;
 };
