@@ -1,17 +1,14 @@
-NAME = a.out
-CPP = c++
-CFLAGS = -std=c++98 -Wall -Wextra -Werror 
-SRCS = main.cpp \
-	   Bureaucrat.cpp
-OBJS = $(SRCS:.cpp=.o)
+NAME		= bureaucrat
+CXX			= c++
+CXXFLAGS	= -Wall -Wextra -Werror -std=c++98
+
+SRCS		= main.cpp Bureaucrat.cpp
+OBJS		= $(SRCS:.cpp=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CPP) $(CFLAGS) -o $(NAME) $(OBJS)
-
-%.o : %.cpp
-	$(CPP) $(CFLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 clean:
 	rm -f $(OBJS)
@@ -19,6 +16,6 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-re : fclean all
+re: fclean all
 
-.PHONY: all clean fclean res
+.PHONY: all clean fclean re
